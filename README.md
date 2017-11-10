@@ -7,7 +7,7 @@ Access `vagrant ssh-config` from ruby code.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'vagrant_ssh_config'
+gem 'vagrant-ssh-config'
 ```
 
 And then execute:
@@ -16,7 +16,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install vagrant_ssh_config
+    $ gem install vagrant-ssh-config
 
 ## Usage
 

@@ -4,14 +4,14 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "vagrant/ssh/config/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "vagrant_ssh_config"
+  spec.name          = "vagrant-ssh-config"
   spec.version       = Vagrant::SSH::Config::VERSION
   spec.authors       = ["Tomoyuki Sakurai"]
   spec.email         = ["tomoyukis@reallyenglish.com"]
 
   spec.summary       = "Access `vagrant ssh_config from ruby"
   spec.description   = "Access `vagrant ssh_config from ruby"
-  spec.homepage      = "https://github.com/trombik/#{spec.name}"
+  spec.homepage      = "https://github.com/reallyenglish/#{spec.name}"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the
   # 'allowed_push_host' to allow pushing to a single host or delete this
