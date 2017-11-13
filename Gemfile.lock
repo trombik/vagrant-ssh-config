@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    vagrant-ssh-config (0.1.0)
+    vagrant-ssh-config (1.0.1)
       net-ssh (~> 3.0.2)
 
 GEM
