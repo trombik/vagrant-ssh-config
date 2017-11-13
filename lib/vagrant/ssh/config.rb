@@ -50,7 +50,7 @@ module Vagrant
           configure_env(env: env)
           Open3.popen3("vagrant ssh-config") do |_i, o, e, thr|
             # rubocop:disable Metrics/LineLength:
-            raise StandardError, format("failed to run `vagrant ssh-config`\n%s\n%s", out.read.chomp, e.read.chomp) unless thr.value.success?
+            raise StandardError, format("failed to run `vagrant ssh-config`\n%s\n%s", o.read.chomp, e.read.chomp) unless thr.value.success?
             # rubocop:enable Metrics/LineLength:
             o.read.chomp
           end
