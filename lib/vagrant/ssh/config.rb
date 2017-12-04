@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "vagrant/ssh/config/version"
 require "net/ssh"
 require "English"
@@ -16,7 +18,7 @@ module Vagrant
       # @return [String] raw content of `vagrant ssh-config`
       def self.ssh_config(env: {})
         return @ssh_config if @ssh_config
-        @ssh_config = get_vagrant_ssh_config(env: env) unless @ssh_config
+        @ssh_config ||= get_vagrant_ssh_config(env: env)
       end
 
       # @param [String] hostname, opts
@@ -50,7 +52,7 @@ module Vagrant
           configure_env(env: env)
           Open3.popen3("vagrant ssh-config") do |_i, o, e, thr|
             # rubocop:disable Metrics/LineLength:
-            raise StandardError, format("failed to run `vagrant ssh-config`\n%s\n%s", out.read.chomp, e.read.chomp) unless thr.value.success?
+            raise StandardError, format("failed to run `vagrant ssh-config`\n%s\n%s", o.read.chomp, e.read.chomp) unless thr.value.success?
             # rubocop:enable Metrics/LineLength:
             o.read.chomp
           end
