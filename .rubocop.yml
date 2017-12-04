@@ -1,6 +1,7 @@
 inherit_from: .rubocop_todo.yml
 
 AllCops:
+  TargetRubyVersion: 2.3
   Exclude:
     # there is no reason to test external files
     - "vendor/**/*"

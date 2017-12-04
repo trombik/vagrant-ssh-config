@@ -1,42 +1,44 @@
+# frozen_string_literal: true
+
 require_relative "../../../spec_helper"
 
 vagrant_dir = "#{Dir.pwd}/spec/vagrant"
 vagrant_path = `which vagrant`.chomp
-ssh_config_regexp = <<'__EOF__'
-Host default
-  HostName 127\.0\.0\.1
-  User vagrant
-  Port \d+
-  UserKnownHostsFile \/dev\/null
-  StrictHostKeyChecking no
-  PasswordAuthentication no
-  IdentityFile .*\/private_key
-  IdentitiesOnly yes
-  LogLevel FATAL
-__EOF__
+ssh_config_regexp = <<~'__SSH_CONFIG_REGEXP__'
+  Host default
+    HostName 127\.0\.0\.1
+    User vagrant
+    Port \d+
+    UserKnownHostsFile \/dev\/null
+    StrictHostKeyChecking no
+    PasswordAuthentication no
+    IdentityFile .*\/private_key
+    IdentitiesOnly yes
+    LogLevel FATAL
+__SSH_CONFIG_REGEXP__
 
-ssh_config = <<'__EOF__'
-Host default
-  HostName 192.168.123.123
-  User foo
-  Port 22
-  UserKnownHostsFile /dev/null
-  StrictHostKeyChecking no
-  PasswordAuthentication no
-  IdentityFile /your/private_key
-  IdentitiesOnly yes
-  LogLevel FATAL
-Host foo
-  HostName 192.168.1.1
-  User foo
-  Port 22
-  UserKnownHostsFile /dev/null
-  StrictHostKeyChecking no
-  PasswordAuthentication no
-  IdentityFile /my/private_key
-  IdentitiesOnly yes
-  LogLevel FATAL
-__EOF__
+ssh_config = <<~'__SSH_CONFIG__'
+  Host default
+    HostName 192.168.123.123
+    User foo
+    Port 22
+    UserKnownHostsFile /dev/null
+    StrictHostKeyChecking no
+    PasswordAuthentication no
+    IdentityFile /your/private_key
+    IdentitiesOnly yes
+    LogLevel FATAL
+  Host foo
+    HostName 192.168.1.1
+    User foo
+    Port 22
+    UserKnownHostsFile /dev/null
+    StrictHostKeyChecking no
+    PasswordAuthentication no
+    IdentityFile /my/private_key
+    IdentitiesOnly yes
+    LogLevel FATAL
+__SSH_CONFIG__
 
 RSpec.describe Vagrant::SSH::Config do
   it "has a version number" do
