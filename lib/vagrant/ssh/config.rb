@@ -48,7 +48,7 @@ module Vagrant
       # values
       # @return [String] raw content of `vagrant ssh-config`
       def self.get_vagrant_ssh_config(env: {})
-        Bundler.with_clean_env do
+        Bundler.with_unbundled_env do
           configure_env(env: env)
           Open3.popen3("vagrant ssh-config") do |_i, o, e, thr|
             # rubocop:disable Metrics/LineLength:

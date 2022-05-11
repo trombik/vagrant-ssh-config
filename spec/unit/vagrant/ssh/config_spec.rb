@@ -63,7 +63,7 @@ RSpec.describe Vagrant::SSH::Config do
     context "With Vagrantfile" do
       before(:all) do
         Dir.chdir(vagrant_dir) do
-          Bundler.with_clean_env do
+          Bundler.with_unbundled_env do
             `#{vagrant_path} up` unless vagrant_path.empty?
           end
         end
@@ -71,7 +71,7 @@ RSpec.describe Vagrant::SSH::Config do
 
       after(:all) do
         Dir.chdir(vagrant_dir) do
-          Bundler.with_clean_env do
+          Bundler.with_unbundled_env do
             `#{vagrant_path} destroy -f` unless vagrant_path.empty?
           end
         end
